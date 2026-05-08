@@ -8,6 +8,18 @@ There are thousands of Gridfinity bins on MakerWorld — open tubs, utensil hold
 
 Zero dependencies. Pure Node.js (v18+).
 
+## Installation
+
+Clone and optionally link so the tools are available from any directory:
+
+```sh
+git clone https://github.com/dimatosj/gridfinity-drawer-organizer.git
+cd gridfinity-drawer-organizer
+npm link   # adds "gridfinity-*" commands to your PATH
+```
+
+Or just run tools directly with `node src/<tool>.js`.
+
 ## Designed for Claude Code
 
 This tool is built to be driven by [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Rather than memorizing CLI flags and JSON schemas, you describe your drawer and what goes in it in plain English — Claude reads the CLAUDE.md instructions and runs the full pipeline for you:
@@ -89,7 +101,7 @@ This scans every STL, measures bounding boxes, parses filenames for grid dimensi
 node src/gridfinity-layout.js 500x400x80 --project kitchen
 ```
 
-Opens an HTML preview showing grid dimensions (11x9), which bin heights fit, three placement options within the drawer, and baseplate tiling.
+Opens an HTML preview showing grid dimensions (11x9), which bin heights fit, and baseplate tiling.
 
 ### 4. Place items
 
@@ -150,6 +162,14 @@ The fit engine accepts several options per item:
 | `at` | Pin to exact grid coordinates `[x, y]` |
 | `label` | Custom display label for the preview |
 | `reserved` | Block out grid cells for non-bin items (cutting boards, trays that don't need printing) |
+
+### Global Options
+
+Pass these at the top level of the input JSON (alongside `items`):
+
+| Field | Default | Description |
+|-------|---------|-------------|
+| `maxPlateSize` | auto-detected | Override the maximum baseplate size (e.g., `4` limits tiling to 4x4 plates) |
 
 ## Adding New Packs
 

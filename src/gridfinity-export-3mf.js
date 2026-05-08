@@ -454,10 +454,32 @@ function export3MF(projectName) {
 module.exports = { export3MF, resolveSTLPath };
 
 if (require.main === module) {
-  const name = process.argv[2];
+  const args = process.argv.slice(2);
+  let name = null;
+
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--help' || args[i] === '-h') {
+      process.stderr.write('Usage: gridfinity-export-3mf.js <project-name>\n');
+      process.stderr.write('       gridfinity-export-3mf.js --project <name>\n');
+      process.stderr.write('\nExports all STLs into a plate-arranged .3mf for Bambu Studio.\n');
+      process.exit(0);
+    }
+    if (args[i] === '--project' || args[i] === '-p') name = args[++i];
+    else if (!name && !args[i].startsWith('--')) name = args[i];
+  }
+
   if (!name) {
     process.stderr.write('Usage: gridfinity-export-3mf.js <project-name>\n');
     process.exit(1);
   }
+
+  const layoutPath = path.join(PROJECTS_DIR, name, 'layout.json');
+  if (!fs.existsSync(layoutPath)) {
+    process.stderr.write(`Project not found: ${name}\n`);
+    process.stderr.write(`Expected: ${layoutPath}\n`);
+    process.stderr.write('Run gridfinity-fit.js first to create a layout.\n');
+    process.exit(1);
+  }
+
   export3MF(name);
 }

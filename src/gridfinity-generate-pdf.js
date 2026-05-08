@@ -230,9 +230,30 @@ function generateChecklist(projectName) {
 }
 
 if (require.main === module) {
-  const name = process.argv[2];
+  const args = process.argv.slice(2);
+  let name = null;
+
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--help' || args[i] === '-h') {
+      process.stderr.write('Usage: gridfinity-generate-pdf.js <project-name>\n');
+      process.stderr.write('       gridfinity-generate-pdf.js --project <name>\n');
+      process.stderr.write('\nGenerates a printable PDF checklist of all parts by plate.\n');
+      process.exit(0);
+    }
+    if (args[i] === '--project' || args[i] === '-p') name = args[++i];
+    else if (!name && !args[i].startsWith('--')) name = args[i];
+  }
+
   if (!name) {
-    process.stderr.write('Usage: node gridfinity-generate-pdf.js <project-name>\n');
+    process.stderr.write('Usage: gridfinity-generate-pdf.js <project-name>\n');
+    process.exit(1);
+  }
+
+  const layoutPath = path.join(PROJECTS_DIR, name, 'layout.json');
+  if (!fs.existsSync(layoutPath)) {
+    process.stderr.write(`Project not found: ${name}\n`);
+    process.stderr.write(`Expected: ${layoutPath}\n`);
+    process.stderr.write('Run gridfinity-fit.js first to create a layout.\n');
     process.exit(1);
   }
 

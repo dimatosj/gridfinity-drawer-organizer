@@ -418,16 +418,25 @@ if (require.main === module) {
   const args = process.argv.slice(2);
   let projectName = null;
   let drawerStr = null;
+  let inputFile = null;
 
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--help' || args[i] === '-h') {
+      console.error('Usage: gridfinity-fit.js [options] < input.json');
+      console.error('       gridfinity-fit.js --input input.json [options]');
+      console.error('\nOptions:');
+      console.error('  --drawer WxDxH    Drawer dimensions in mm (overrides JSON)');
+      console.error('  --project <name>  Save layout to projects/<name>/');
+      console.error('  --input <file>    Read input JSON from file instead of stdin');
+      console.error('\nInput JSON: {"drawer":{"width":N,"depth":N,"height":N},"items":[...],"reserved":[]}');
+      process.exit(0);
+    }
     if (args[i] === '--project' || args[i] === '-p') projectName = args[++i];
     else if (args[i] === '--drawer' || args[i] === '-d') drawerStr = args[++i];
+    else if (args[i] === '--input' || args[i] === '-i') inputFile = args[++i];
   }
 
-  let data = '';
-  process.stdin.setEncoding('utf8');
-  process.stdin.on('data', chunk => { data += chunk; });
-  process.stdin.on('end', () => {
+  function run(data) {
     let input;
     try {
       input = JSON.parse(data);
@@ -440,6 +449,7 @@ if (require.main === module) {
       console.error('Provide drawer dimensions: --drawer WxDxH (mm)');
       process.exit(1);
     }
+
     const d = input.drawer;
     if (!Number.isFinite(d.width) || !Number.isFinite(d.depth) || !Number.isFinite(d.height)
         || d.width <= 0 || d.depth <= 0 || d.height <= 0) {
@@ -461,7 +471,26 @@ if (require.main === module) {
     }
 
     process.stdout.write(JSON.stringify(output, null, 2) + '\n');
-  });
+  }
+
+  if (inputFile) {
+    if (!fs.existsSync(inputFile)) {
+      console.error(`Input file not found: ${inputFile}`);
+      process.exit(1);
+    }
+    run(fs.readFileSync(inputFile, 'utf8'));
+  } else if (process.stdin.isTTY) {
+    console.error('Error: Input must be piped via stdin or provided with --input <file>.');
+    console.error('Example: echo \'{"items":[],"reserved":[]}\' | gridfinity-fit.js --drawer 500x400x80');
+    console.error('    or:  gridfinity-fit.js --input items.json --drawer 500x400x80');
+    console.error('\nRun with --help for full usage.');
+    process.exit(1);
+  } else {
+    let data = '';
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', chunk => { data += chunk; });
+    process.stdin.on('end', () => run(data));
+  }
 }
 
 module.exports = { loadCatalog, matchItem, findOpenTub, resolveItems, fitLayout };

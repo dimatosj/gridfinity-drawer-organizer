@@ -102,6 +102,20 @@ function parseArgs(argv) {
 
   let i = 0;
   while (i < args.length) {
+    if (args[i] === '--help' || args[i] === '-h') {
+      console.error('Usage: gridfinity-intake <stl-directory> [options]');
+      console.error('\nScans a directory of Gridfinity STLs, measures bounding boxes,');
+      console.error('parses filenames for grid dimensions, and writes a pack manifest.');
+      console.error('\nOptions:');
+      console.error('  --name "Display Name"     Collection display name');
+      console.error('  --source-url "https://…"  MakerWorld URL');
+      console.error('  --pack-id slug            Output filename slug (derived from dir if omitted)');
+      console.error('  --grid-unit 42            Grid unit in mm (default: 42)');
+      console.error('  --base-height 3.8         Base height in mm (default: 3.8)');
+      console.error('  --height-unit 7           Height per U in mm (default: 7)');
+      console.error('  --output packs/           Output directory (default: packs/)');
+      process.exit(0);
+    }
     switch (args[i]) {
       case '--name':        opts.name = args[++i]; break;
       case '--source-url':  opts.sourceUrl = args[++i]; break;

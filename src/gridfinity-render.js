@@ -109,7 +109,7 @@ function renderHTML(layout, projectName) {
     .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.88em; }
     .swatch { display: inline-block; width: 16px; height: 16px; border-radius: 3px; flex-shrink: 0; }
 
-    .grid-container { display: grid; gap: 3px; margin: 16px 0 24px; }
+    .grid-container { display: grid; gap: 3px; margin: 16px 0 24px; overflow-x: auto; }
     .box-cell {
       border-radius: 5px; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
@@ -174,7 +174,13 @@ if (require.main === module) {
   let projectName = null;
 
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--help' || args[i] === '-h') {
+      console.error('Usage: gridfinity-render.js --project <name>');
+      console.error('\nRenders an interactive HTML layout preview.');
+      process.exit(0);
+    }
     if (args[i] === '--project' || args[i] === '-p') projectName = args[++i];
+    else if (!projectName && !args[i].startsWith('--')) projectName = args[i];
   }
 
   if (!projectName) {

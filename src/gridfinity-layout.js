@@ -106,7 +106,7 @@ function renderLayoutHTML(grid, baseplates, catalogSummary, heights) {
     h2 { font-size: 1.2rem; color: #a29bfe; margin: 32px 0 12px; border-bottom: 1px solid #333; padding-bottom: 6px; }
     .subtitle { color: #aaa; margin-bottom: 24px; }
 
-    .grid-container { display: grid; gap: 2px; }
+    .grid-container { display: grid; gap: 2px; overflow-x: auto; }
     .empty-cell {
       background: #2d3436; border: 1px dashed #444; border-radius: 3px;
       aspect-ratio: 1; min-width: 0;
@@ -199,6 +199,12 @@ if (require.main === module) {
   let projectName = null;
 
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--help' || args[i] === '-h') {
+      console.error('Usage: gridfinity-layout.js <WxDxH> [--project name]');
+      console.error('\nComputes grid dimensions, bin height analysis, and baseplate tiling.');
+      console.error('Dimensions in mm. Example: gridfinity-layout.js 500x400x80 --project kitchen');
+      process.exit(0);
+    }
     if (args[i] === '--drawer' || args[i] === '-d') drawerStr = args[++i];
     else if (args[i] === '--project' || args[i] === '-p') projectName = args[++i];
     else if (!drawerStr && !args[i].startsWith('--')) drawerStr = args[i];
@@ -222,6 +228,10 @@ if (require.main === module) {
   }
 
   const grid = calculateGrid(drawerMm);
+  if (grid.width === 0 || grid.depth === 0) {
+    console.error(`Drawer too small for any Gridfinity bins (need at least ${GRID_UNIT}mm in each axis, got ${drawerMm.width}x${drawerMm.depth}mm)`);
+    process.exit(1);
+  }
   const baseplates = computeBaseplates(grid);
   const catalogSummary = loadCatalogSummary(grid.maxHeightUnits);
   const heights = heightAnalysis(grid.maxHeightUnits);
