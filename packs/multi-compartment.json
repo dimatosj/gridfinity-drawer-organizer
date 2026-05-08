@@ -1,0 +1,391 @@
+{
+  "pack": "multi-compartment",
+  "name": "Multi-Compartment Bins by mcclajb",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": null,
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "multi-compartment-3x3x3",
+      "file": "3x3x3U - 8 compartment.stl",
+      "type": "compartmented",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 3,
+      "measured": {
+        "width": 125.5,
+        "depth": 125.5,
+        "height": 24.8
+      },
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 2,
+          "width": 40,
+          "depth": 61
+        },
+        {
+          "x": 85,
+          "y": 2,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 2,
+          "y": 43,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 85,
+          "y": 43,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 64,
+          "width": 40,
+          "depth": 60
+        },
+        {
+          "x": 2,
+          "y": 85,
+          "width": 40,
+          "depth": 39
+        },
+        {
+          "x": 85,
+          "y": 85,
+          "width": 39,
+          "depth": 39
+        }
+      ]
+    },
+    {
+      "id": "multi-compartment-3x3x4",
+      "file": "3x3x4U - 8 compartment.stl",
+      "type": "compartmented",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 4,
+      "measured": {
+        "width": 125.5,
+        "depth": 125.5,
+        "height": 31.8
+      },
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 2,
+          "width": 40,
+          "depth": 61
+        },
+        {
+          "x": 85,
+          "y": 2,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 2,
+          "y": 43,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 85,
+          "y": 43,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 64,
+          "width": 40,
+          "depth": 60
+        },
+        {
+          "x": 2,
+          "y": 85,
+          "width": 40,
+          "depth": 39
+        },
+        {
+          "x": 85,
+          "y": 85,
+          "width": 39,
+          "depth": 39
+        }
+      ]
+    },
+    {
+      "id": "multi-compartment-3x3x5",
+      "file": "3x3x5U - 8 compartment.stl",
+      "type": "compartmented",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 5,
+      "measured": {
+        "width": 125.5,
+        "depth": 125.5,
+        "height": 38.8
+      },
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 2,
+          "width": 40,
+          "depth": 61
+        },
+        {
+          "x": 85,
+          "y": 2,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 2,
+          "y": 43,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 85,
+          "y": 43,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 64,
+          "width": 40,
+          "depth": 60
+        },
+        {
+          "x": 2,
+          "y": 85,
+          "width": 40,
+          "depth": 39
+        },
+        {
+          "x": 85,
+          "y": 85,
+          "width": 39,
+          "depth": 39
+        }
+      ]
+    },
+    {
+      "id": "multi-compartment-3x3x6",
+      "file": "3x3x6U - 8 compartment.stl",
+      "type": "compartmented",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 6,
+      "measured": {
+        "width": 125.5,
+        "depth": 125.5,
+        "height": 45.8
+      },
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 2,
+          "width": 40,
+          "depth": 61
+        },
+        {
+          "x": 85,
+          "y": 2,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 2,
+          "y": 43,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 85,
+          "y": 43,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 64,
+          "width": 40,
+          "depth": 60
+        },
+        {
+          "x": 2,
+          "y": 85,
+          "width": 40,
+          "depth": 39
+        },
+        {
+          "x": 85,
+          "y": 85,
+          "width": 39,
+          "depth": 39
+        }
+      ]
+    },
+    {
+      "id": "multi-compartment-3x3x7",
+      "file": "3x3x7U - 8 compartment.stl",
+      "type": "compartmented",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 7,
+      "measured": {
+        "width": 125.5,
+        "depth": 125.5,
+        "height": 52.8
+      },
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 2,
+          "width": 40,
+          "depth": 61
+        },
+        {
+          "x": 85,
+          "y": 2,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 2,
+          "y": 43,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 85,
+          "y": 43,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 64,
+          "width": 40,
+          "depth": 60
+        },
+        {
+          "x": 2,
+          "y": 85,
+          "width": 40,
+          "depth": 39
+        },
+        {
+          "x": 85,
+          "y": 85,
+          "width": 39,
+          "depth": 39
+        }
+      ]
+    },
+    {
+      "id": "multi-compartment-3x3x8",
+      "file": "3x3x8U - 8 compartment.stl",
+      "type": "compartmented",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 8,
+      "measured": {
+        "width": 125.5,
+        "depth": 125.5,
+        "height": 59.8
+      },
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 2,
+          "width": 40,
+          "depth": 61
+        },
+        {
+          "x": 85,
+          "y": 2,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 2,
+          "y": 43,
+          "width": 40,
+          "depth": 40
+        },
+        {
+          "x": 85,
+          "y": 43,
+          "width": 39,
+          "depth": 40
+        },
+        {
+          "x": 43,
+          "y": 64,
+          "width": 40,
+          "depth": 60
+        },
+        {
+          "x": 2,
+          "y": 85,
+          "width": 40,
+          "depth": 39
+        },
+        {
+          "x": 85,
+          "y": 85,
+          "width": 39,
+          "depth": 39
+        }
+      ]
+    }
+  ]
+}

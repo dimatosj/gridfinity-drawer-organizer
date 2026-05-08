@@ -1,0 +1,95 @@
+{
+  "pack": "solo-bins",
+  "name": "solo STLs ",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": null,
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "solo-bins-1x3x5",
+      "file": "obj_1_1X3X2.5U Fastback Model 48-22-1500.STEP.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 3,
+      "heightUnits": 5,
+      "measured": {
+        "width": 125.5,
+        "depth": 41.5,
+        "height": 38.8
+      },
+      "forItem": "Milwaukee Fastback utility knife (48-22-1500)",
+      "category": "tools",
+      "notes": "stackable, also fits 48-22-1502 and 48-22-1505 (6-in-1). By schayloh. License: Standard Digital File License"
+    },
+    {
+      "id": "solo-bins-2x3x2",
+      "file": "gridfinity-2x3-bolt-sizer.stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 3,
+      "heightUnits": 2,
+      "measured": {
+        "width": 82.7,
+        "depth": 125.5,
+        "height": 20.4
+      },
+      "forItem": "bolt/screw measuring tool",
+      "category": "tools",
+      "notes": "color-highlighted bolt sizer, 3x2 footprint. By Tim_T. Remix of Blogle's screw measuring tool",
+      "compartments": [
+        {
+          "x": 0,
+          "y": 85,
+          "width": 13,
+          "depth": 10
+        },
+        {
+          "x": 0,
+          "y": 103,
+          "width": 13,
+          "depth": 12
+        },
+        {
+          "x": 32,
+          "y": 119,
+          "width": 37,
+          "depth": 7
+        }
+      ]
+    },
+    {
+      "id": "solo-bins-6x2x6",
+      "file": "obj_2_Gridfinity 6-inch Caliper 6x2x6_v2_w_Logo.stl",
+      "type": "purpose-built",
+      "gridW": 6,
+      "gridL": 2,
+      "heightUnits": 6,
+      "measured": {
+        "width": 233.8,
+        "depth": 233.8,
+        "height": 45.8
+      },
+      "forItem": "6-inch caliper",
+      "category": "tools",
+      "notes": "6x2x6U, shorter/quicker to print than original. By Maxim Sysak",
+      "compartments": [
+        {
+          "x": 121,
+          "y": 122,
+          "width": 22,
+          "depth": 23
+        },
+        {
+          "x": 108,
+          "y": 135,
+          "width": 22,
+          "depth": 23
+        }
+      ]
+    }
+  ]
+}

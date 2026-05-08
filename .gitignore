@@ -1,0 +1,14 @@
+# Downloaded STL collections (users download their own)
+STLs/
+
+# Generated project data
+projects/
+
+# Dev screenshots
+screenshots/
+
+# OS
+.DS_Store
+
+# Node
+node_modules/

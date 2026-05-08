@@ -1,0 +1,481 @@
+{
+  "pack": "simple-base",
+  "name": "Gridfinity Simple Base - All Sizes",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": "https://makerworld.com/en/models/700948-gridfinity-simple-base-all-sizes",
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "simple-base-1x1",
+      "file": "Gridfinity-SimpleBase1x1.stl",
+      "type": "baseplate",
+      "gridW": 1,
+      "gridL": 1,
+      "heightUnits": 0,
+      "measured": {
+        "width": 42,
+        "depth": 42,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-1x2",
+      "file": "Gridfinity-SimpleBase1x2.stl",
+      "type": "baseplate",
+      "gridW": 1,
+      "gridL": 2,
+      "heightUnits": 0,
+      "measured": {
+        "width": 42,
+        "depth": 84,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-1x3",
+      "file": "Gridfinity-SimpleBase1x3.stl",
+      "type": "baseplate",
+      "gridW": 1,
+      "gridL": 3,
+      "heightUnits": 0,
+      "measured": {
+        "width": 42,
+        "depth": 126,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-1x4",
+      "file": "Gridfinity-SimpleBase1x4.stl",
+      "type": "baseplate",
+      "gridW": 1,
+      "gridL": 4,
+      "heightUnits": 0,
+      "measured": {
+        "width": 42,
+        "depth": 168,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-1x5",
+      "file": "Gridfinity-SimpleBase1x5.stl",
+      "type": "baseplate",
+      "gridW": 1,
+      "gridL": 5,
+      "heightUnits": 0,
+      "measured": {
+        "width": 42,
+        "depth": 210,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-1x6",
+      "file": "Gridfinity-SimpleBase1x6.stl",
+      "type": "baseplate",
+      "gridW": 1,
+      "gridL": 6,
+      "heightUnits": 0,
+      "measured": {
+        "width": 42,
+        "depth": 252,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-2x1",
+      "file": "Gridfinity-SimpleBase2x1.stl",
+      "type": "baseplate",
+      "gridW": 2,
+      "gridL": 1,
+      "heightUnits": 0,
+      "measured": {
+        "width": 84,
+        "depth": 42,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-2x2",
+      "file": "Gridfinity-SimpleBase2x2.stl",
+      "type": "baseplate",
+      "gridW": 2,
+      "gridL": 2,
+      "heightUnits": 0,
+      "measured": {
+        "width": 84,
+        "depth": 84,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-2x3",
+      "file": "Gridfinity-SimpleBase2x3.stl",
+      "type": "baseplate",
+      "gridW": 2,
+      "gridL": 3,
+      "heightUnits": 0,
+      "measured": {
+        "width": 84,
+        "depth": 126,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-2x4",
+      "file": "Gridfinity-SimpleBase2x4.stl",
+      "type": "baseplate",
+      "gridW": 2,
+      "gridL": 4,
+      "heightUnits": 0,
+      "measured": {
+        "width": 84,
+        "depth": 168,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-2x5",
+      "file": "Gridfinity-SimpleBase2x5.stl",
+      "type": "baseplate",
+      "gridW": 2,
+      "gridL": 5,
+      "heightUnits": 0,
+      "measured": {
+        "width": 84,
+        "depth": 210,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-2x6",
+      "file": "Gridfinity-SimpleBase2x6.stl",
+      "type": "baseplate",
+      "gridW": 2,
+      "gridL": 6,
+      "heightUnits": 0,
+      "measured": {
+        "width": 84,
+        "depth": 252,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-3x1",
+      "file": "Gridfinity-SimpleBase3x1.stl",
+      "type": "baseplate",
+      "gridW": 3,
+      "gridL": 1,
+      "heightUnits": 0,
+      "measured": {
+        "width": 126,
+        "depth": 42,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-3x2",
+      "file": "Gridfinity-SimpleBase3x2.stl",
+      "type": "baseplate",
+      "gridW": 3,
+      "gridL": 2,
+      "heightUnits": 0,
+      "measured": {
+        "width": 126,
+        "depth": 84,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-3x3",
+      "file": "Gridfinity-SimpleBase3x3.stl",
+      "type": "baseplate",
+      "gridW": 3,
+      "gridL": 3,
+      "heightUnits": 0,
+      "measured": {
+        "width": 126,
+        "depth": 126,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-3x4",
+      "file": "Gridfinity-SimpleBase3x4.stl",
+      "type": "baseplate",
+      "gridW": 3,
+      "gridL": 4,
+      "heightUnits": 0,
+      "measured": {
+        "width": 126,
+        "depth": 168,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-3x5",
+      "file": "Gridfinity-SimpleBase3x5.stl",
+      "type": "baseplate",
+      "gridW": 3,
+      "gridL": 5,
+      "heightUnits": 0,
+      "measured": {
+        "width": 126,
+        "depth": 210,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-3x6",
+      "file": "Gridfinity-SimpleBase3x6.stl",
+      "type": "baseplate",
+      "gridW": 3,
+      "gridL": 6,
+      "heightUnits": 0,
+      "measured": {
+        "width": 126,
+        "depth": 252,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-4x1",
+      "file": "Gridfinity-SimpleBase4x1.stl",
+      "type": "baseplate",
+      "gridW": 4,
+      "gridL": 1,
+      "heightUnits": 0,
+      "measured": {
+        "width": 168,
+        "depth": 42,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-4x2",
+      "file": "Gridfinity-SimpleBase4x2.stl",
+      "type": "baseplate",
+      "gridW": 4,
+      "gridL": 2,
+      "heightUnits": 0,
+      "measured": {
+        "width": 168,
+        "depth": 84,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-4x3",
+      "file": "Gridfinity-SimpleBase4x3.stl",
+      "type": "baseplate",
+      "gridW": 4,
+      "gridL": 3,
+      "heightUnits": 0,
+      "measured": {
+        "width": 168,
+        "depth": 126,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-4x4",
+      "file": "Gridfinity-SimpleBase4x4.stl",
+      "type": "baseplate",
+      "gridW": 4,
+      "gridL": 4,
+      "heightUnits": 0,
+      "measured": {
+        "width": 168,
+        "depth": 168,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-4x5",
+      "file": "Gridfinity-SimpleBase4x5.stl",
+      "type": "baseplate",
+      "gridW": 4,
+      "gridL": 5,
+      "heightUnits": 0,
+      "measured": {
+        "width": 168,
+        "depth": 210,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-4x6",
+      "file": "Gridfinity-SimpleBase4x6.stl",
+      "type": "baseplate",
+      "gridW": 4,
+      "gridL": 6,
+      "heightUnits": 0,
+      "measured": {
+        "width": 168,
+        "depth": 252,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-5x1",
+      "file": "Gridfinity-SimpleBase5x1.stl",
+      "type": "baseplate",
+      "gridW": 5,
+      "gridL": 1,
+      "heightUnits": 0,
+      "measured": {
+        "width": 210,
+        "depth": 42,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-5x2",
+      "file": "Gridfinity-SimpleBase5x2.stl",
+      "type": "baseplate",
+      "gridW": 5,
+      "gridL": 2,
+      "heightUnits": 0,
+      "measured": {
+        "width": 210,
+        "depth": 84,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-5x3",
+      "file": "Gridfinity-SimpleBase5x3.stl",
+      "type": "baseplate",
+      "gridW": 5,
+      "gridL": 3,
+      "heightUnits": 0,
+      "measured": {
+        "width": 210,
+        "depth": 126,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-5x4",
+      "file": "Gridfinity-SimpleBase5x4.stl",
+      "type": "baseplate",
+      "gridW": 5,
+      "gridL": 4,
+      "heightUnits": 0,
+      "measured": {
+        "width": 210,
+        "depth": 168,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-5x5",
+      "file": "Gridfinity-SimpleBase5x5.stl",
+      "type": "baseplate",
+      "gridW": 5,
+      "gridL": 5,
+      "heightUnits": 0,
+      "measured": {
+        "width": 210,
+        "depth": 210,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-5x6",
+      "file": "Gridfinity-SimpleBase5x6.stl",
+      "type": "baseplate",
+      "gridW": 5,
+      "gridL": 6,
+      "heightUnits": 0,
+      "measured": {
+        "width": 210,
+        "depth": 252,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-6x1",
+      "file": "Gridfinity-SimpleBase6x1.stl",
+      "type": "baseplate",
+      "gridW": 6,
+      "gridL": 1,
+      "heightUnits": 0,
+      "measured": {
+        "width": 252,
+        "depth": 42,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-6x2",
+      "file": "Gridfinity-SimpleBase6x2.stl",
+      "type": "baseplate",
+      "gridW": 6,
+      "gridL": 2,
+      "heightUnits": 0,
+      "measured": {
+        "width": 252,
+        "depth": 84,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-6x3",
+      "file": "Gridfinity-SimpleBase6x3.stl",
+      "type": "baseplate",
+      "gridW": 6,
+      "gridL": 3,
+      "heightUnits": 0,
+      "measured": {
+        "width": 252,
+        "depth": 126,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-6x4",
+      "file": "Gridfinity-SimpleBase6x4.stl",
+      "type": "baseplate",
+      "gridW": 6,
+      "gridL": 4,
+      "heightUnits": 0,
+      "measured": {
+        "width": 252,
+        "depth": 168,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-6x5",
+      "file": "Gridfinity-SimpleBase6x5.stl",
+      "type": "baseplate",
+      "gridW": 6,
+      "gridL": 5,
+      "heightUnits": 0,
+      "measured": {
+        "width": 252,
+        "depth": 210,
+        "height": 4.3
+      }
+    },
+    {
+      "id": "simple-base-6x6",
+      "file": "Gridfinity-SimpleBase6x6.stl",
+      "type": "baseplate",
+      "gridW": 6,
+      "gridL": 6,
+      "heightUnits": 0,
+      "measured": {
+        "width": 252,
+        "depth": 252,
+        "height": 4.3
+      }
+    }
+  ]
+}

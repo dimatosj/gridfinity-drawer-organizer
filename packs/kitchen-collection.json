@@ -1,0 +1,204 @@
+{
+  "pack": "kitchen-collection",
+  "name": "Gridfinity+Complete+Kitchen+Collection+(w_+Modular+Expansion+Pieces)",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": "https://makerworld.com/en/models/148636",
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "kitchen-collection-1x1x1",
+      "file": "Generic Modular - 1x1 Blank (1).stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 1,
+      "heightUnits": 1,
+      "measured": {
+        "width": 41.8,
+        "depth": 42,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "kitchen-collection-1x3x9",
+      "file": "Coffee Stirrers.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 3,
+      "heightUnits": 9,
+      "measured": {
+        "width": 41.5,
+        "depth": 125.5,
+        "height": 69.5
+      },
+      "forItem": "coffee stirrers",
+      "category": "kitchen-utensils"
+    },
+    {
+      "id": "kitchen-collection-1x4x9",
+      "file": "Cheese Forks.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 4,
+      "heightUnits": 9,
+      "measured": {
+        "width": 41.5,
+        "depth": 167.5,
+        "height": 69.5
+      },
+      "forItem": "cheese forks",
+      "category": "kitchen-utensils",
+      "notes": "may fit other short utensils — measure before assuming"
+    },
+    {
+      "id": "kitchen-collection-1x5x9",
+      "file": "Kids Knives.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 5,
+      "heightUnits": 9,
+      "measured": {
+        "width": 41.5,
+        "depth": 209.5,
+        "height": 69.5
+      },
+      "forItem": "kids knives",
+      "category": "kitchen-utensils"
+    },
+    {
+      "id": "kitchen-collection-1x6x9",
+      "file": "Chopsticks.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 6,
+      "heightUnits": 9,
+      "measured": {
+        "width": 41.5,
+        "depth": 251.5,
+        "height": 69.5
+      },
+      "forItem": "chopsticks",
+      "category": "kitchen-utensils"
+    },
+    {
+      "id": "kitchen-collection-2x1x1",
+      "file": "Generic Modular - 2x1 Blank.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 1,
+      "heightUnits": 1,
+      "measured": {
+        "width": 83.5,
+        "depth": 42,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "kitchen-collection-2x2x1",
+      "file": "Generic Modular - 2x2 Blank.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 2,
+      "heightUnits": 1,
+      "measured": {
+        "width": 83.5,
+        "depth": 84,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "kitchen-collection-2x2x9",
+      "file": "Generic Modular - Edge_75 (2 Wide).stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 2,
+      "heightUnits": 9,
+      "measured": {
+        "width": 83.5,
+        "depth": 83.8,
+        "height": 69.5
+      },
+      "forItem": "edge filler",
+      "notes": "75mm edge spacer, 2 units wide"
+    },
+    {
+      "id": "kitchen-collection-2x3x1",
+      "file": "Generic Modular - 2x3 Blank.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 3,
+      "heightUnits": 1,
+      "measured": {
+        "width": 83.5,
+        "depth": 126,
+        "height": 6.5
+      }
+    },
+    {
+      "id": "kitchen-collection-2x4x9",
+      "file": "Teaspoons (2 Types).stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 4,
+      "heightUnits": 9,
+      "measured": {
+        "width": 83.5,
+        "depth": 167.8,
+        "height": 69.5
+      },
+      "forItem": "teaspoons",
+      "category": "kitchen-utensils",
+      "notes": "fits 2 types of teaspoons"
+    },
+    {
+      "id": "kitchen-collection-2x4x9-2",
+      "file": "Teaspoons_Offset (2 Types).stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 4,
+      "heightUnits": 9,
+      "measured": {
+        "width": 83.5,
+        "depth": 167.8,
+        "height": 69.5
+      },
+      "forItem": "teaspoons (offset layout)",
+      "category": "kitchen-utensils",
+      "notes": "offset arrangement, fits 2 types"
+    },
+    {
+      "id": "kitchen-collection-2x5x9",
+      "file": "Spoons & Forks.stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 5,
+      "heightUnits": 9,
+      "measured": {
+        "width": 83.5,
+        "depth": 209.5,
+        "height": 69.5
+      },
+      "forItem": "spoons and forks",
+      "category": "kitchen-utensils",
+      "notes": "double-wide (2x) for organizing both together"
+    },
+    {
+      "id": "kitchen-collection-2x6x9",
+      "file": "Knives.stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 6,
+      "heightUnits": 9,
+      "measured": {
+        "width": 83.5,
+        "depth": 251.5,
+        "height": 69.5
+      },
+      "forItem": "knives",
+      "category": "kitchen-utensils"
+    }
+  ]
+}

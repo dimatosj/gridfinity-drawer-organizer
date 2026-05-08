@@ -1,0 +1,247 @@
+{
+  "pack": "dbtw-large-bins",
+  "name": "KYZ Design DBTW Large Bins",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": "https://makerworld.com/en/models/1044058",
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "dbtw-large-bins-1x5x3",
+      "file": "obj_1_DBTW 1x5x3.stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 5,
+      "heightUnits": 3,
+      "measured": {
+        "width": 41.5,
+        "depth": 209.5,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-1x5x6",
+      "file": "obj_10_DBTW 1x5x6.stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 5,
+      "heightUnits": 6,
+      "measured": {
+        "width": 41.5,
+        "depth": 209.5,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-1x6x3",
+      "file": "obj_9_DBTW 1x6x3.stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 6,
+      "heightUnits": 3,
+      "measured": {
+        "width": 204.1,
+        "depth": 204.1,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-1x6x6",
+      "file": "obj_8_DBTW 1x6x6.stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 6,
+      "heightUnits": 6,
+      "measured": {
+        "width": 204.1,
+        "depth": 204.1,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-1x7x3",
+      "file": "obj_7_DBTW 1x7x3.stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 7,
+      "heightUnits": 3,
+      "measured": {
+        "width": 233.7,
+        "depth": 233.7,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-1x7x6",
+      "file": "obj_6_DBTW 1x7x6.stl",
+      "type": "open-tub",
+      "gridW": 1,
+      "gridL": 7,
+      "heightUnits": 6,
+      "measured": {
+        "width": 233.7,
+        "depth": 233.7,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-2x5x3",
+      "file": "obj_5_DBTW 2x5x3.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 5,
+      "heightUnits": 3,
+      "measured": {
+        "width": 83.5,
+        "depth": 209.5,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-2x5x6",
+      "file": "obj_4_DBTW 2x5x6.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 5,
+      "heightUnits": 6,
+      "measured": {
+        "width": 83.5,
+        "depth": 209.5,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-2x6x3",
+      "file": "obj_3_DBTW 2x6x3.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 6,
+      "heightUnits": 3,
+      "measured": {
+        "width": 233.8,
+        "depth": 233.8,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-2x6x6",
+      "file": "obj_2_DBTW 2x6x6.stl",
+      "type": "open-tub",
+      "gridW": 2,
+      "gridL": 6,
+      "heightUnits": 6,
+      "measured": {
+        "width": 233.8,
+        "depth": 233.8,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-3x5x3",
+      "file": "obj_11_DBTW 3x5x3.stl",
+      "type": "open-tub",
+      "gridW": 3,
+      "gridL": 5,
+      "heightUnits": 3,
+      "measured": {
+        "width": 125.5,
+        "depth": 209.5,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-3x5x6",
+      "file": "obj_12_DBTW 3x5x6.stl",
+      "type": "open-tub",
+      "gridW": 3,
+      "gridL": 5,
+      "heightUnits": 6,
+      "measured": {
+        "width": 125.5,
+        "depth": 209.5,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-3x6x3",
+      "file": "obj_13_DBTW 3x6x3.stl",
+      "type": "open-tub",
+      "gridW": 3,
+      "gridL": 6,
+      "heightUnits": 3,
+      "measured": {
+        "width": 125.5,
+        "depth": 251.5,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-3x6x6",
+      "file": "obj_14_DBTW 3x6x6.stl",
+      "type": "open-tub",
+      "gridW": 3,
+      "gridL": 6,
+      "heightUnits": 6,
+      "measured": {
+        "width": 125.5,
+        "depth": 251.5,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-4x6x3",
+      "file": "obj_15_DBTW 4x6x3.stl",
+      "type": "open-tub",
+      "gridW": 4,
+      "gridL": 6,
+      "heightUnits": 3,
+      "measured": {
+        "width": 167.5,
+        "depth": 251.5,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-4x6x6",
+      "file": "obj_16_DBTW 4x6x6.stl",
+      "type": "open-tub",
+      "gridW": 4,
+      "gridL": 6,
+      "heightUnits": 6,
+      "measured": {
+        "width": 167.5,
+        "depth": 251.5,
+        "height": 45.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-5x6x3",
+      "file": "obj_17_DBTW 5x6x3.stl",
+      "type": "open-tub",
+      "gridW": 5,
+      "gridL": 6,
+      "heightUnits": 3,
+      "measured": {
+        "width": 209.5,
+        "depth": 251.5,
+        "height": 24.8
+      }
+    },
+    {
+      "id": "dbtw-large-bins-5x6x6",
+      "file": "obj_18_DBTW 5x6x6.stl",
+      "type": "open-tub",
+      "gridW": 5,
+      "gridL": 6,
+      "heightUnits": 6,
+      "measured": {
+        "width": 209.5,
+        "depth": 251.5,
+        "height": 45.8
+      }
+    }
+  ]
+}

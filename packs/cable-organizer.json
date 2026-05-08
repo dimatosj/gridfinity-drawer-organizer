@@ -1,0 +1,61 @@
+{
+  "pack": "cable-organizer",
+  "name": "线序盒界-Gridfinity数据线收纳盒+抽屉收纳+线缆",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": "https://makerworld.com/en/models/883817",
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "cable-organizer-1x2x6",
+      "file": "短数据线收纳stl2.0.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 2,
+      "heightUnits": 6,
+      "measured": {
+        "width": 41.5,
+        "depth": 83.5,
+        "height": 49
+      },
+      "forItem": "short data cables (<0.5m)",
+      "category": "cables",
+      "notes": "vertical storage, 49mm height, space for adhesive label"
+    },
+    {
+      "id": "cable-organizer-1x2x6-2",
+      "file": "长粗数据线收纳stl2.0.stl",
+      "type": "purpose-built",
+      "gridW": 1,
+      "gridL": 2,
+      "heightUnits": 6,
+      "measured": {
+        "width": 41.5,
+        "depth": 83.5,
+        "height": 49
+      },
+      "forItem": "long/thick data cables",
+      "category": "cables",
+      "notes": "vertical storage for extra-long or thicker-diameter cables"
+    },
+    {
+      "id": "cable-organizer-2x2x6",
+      "file": "长数据线收纳stl2.0.stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 2,
+      "heightUnits": 6,
+      "measured": {
+        "width": 83.5,
+        "depth": 83.5,
+        "height": 49
+      },
+      "forItem": "standard-length data cables",
+      "category": "cables",
+      "notes": "2x2 box for standard-length cables, vertical storage"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "gridfinity-drawer-organizer",
+  "version": "1.0.0",
+  "description": "Plan, visualize, and export Gridfinity drawer organizer layouts using community STL packs from MakerWorld",
+  "license": "MIT",
+  "bin": {
+    "gridfinity-intake": "src/gridfinity-intake.js",
+    "gridfinity-layout": "src/gridfinity-layout.js",
+    "gridfinity-fit": "src/gridfinity-fit.js",
+    "gridfinity-render": "src/gridfinity-render.js",
+    "gridfinity-export-3mf": "src/gridfinity-export-3mf.js",
+    "gridfinity-generate-pdf": "src/gridfinity-generate-pdf.js"
+  },
+  "scripts": {
+    "intake": "node src/gridfinity-intake.js",
+    "layout": "node src/gridfinity-layout.js",
+    "fit": "node src/gridfinity-fit.js",
+    "render": "node src/gridfinity-render.js",
+    "export": "node src/gridfinity-export-3mf.js",
+    "pdf": "node src/gridfinity-generate-pdf.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "gridfinity",
+    "3d-printing",
+    "drawer-organizer",
+    "bambu-studio",
+    "3mf"
+  ]
+}

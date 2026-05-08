@@ -1,0 +1,367 @@
+{
+  "pack": "battery-trays",
+  "name": "Gridfinity+Battery+Boxes+(AA+&+AAA)+-+perfect+fit",
+  "version": "1.0",
+  "source": "makerworld",
+  "sourceUrl": "https://makerworld.com/en/models/797953",
+  "license": "CC-BY-NC-SA",
+  "gridUnit": 42,
+  "baseHeight": 3.8,
+  "heightUnit": 7,
+  "bins": [
+    {
+      "id": "battery-trays-2x2x4",
+      "file": "AAA battery holder 2x2x4.stl",
+      "type": "purpose-built",
+      "gridW": 2,
+      "gridL": 2,
+      "heightUnits": 4,
+      "measured": {
+        "width": 83.5,
+        "depth": 83.5,
+        "height": 31.8
+      },
+      "forItem": "AAA batteries (42 cells, 7x6 layout)",
+      "category": "batteries",
+      "notes": "stackable when empty, tight corner fit fix",
+      "compartments": [
+        {
+          "x": 13,
+          "y": 2,
+          "width": 11,
+          "depth": 10
+        },
+        {
+          "x": 25,
+          "y": 2,
+          "width": 11,
+          "depth": 10
+        },
+        {
+          "x": 37,
+          "y": 2,
+          "width": 11,
+          "depth": 10
+        },
+        {
+          "x": 49,
+          "y": 2,
+          "width": 22,
+          "depth": 10
+        },
+        {
+          "x": 72,
+          "y": 2,
+          "width": 11,
+          "depth": 10
+        },
+        {
+          "x": 2,
+          "y": 13,
+          "width": 10,
+          "depth": 11
+        },
+        {
+          "x": 13,
+          "y": 13,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 25,
+          "y": 13,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 37,
+          "y": 13,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 49,
+          "y": 13,
+          "width": 22,
+          "depth": 11
+        },
+        {
+          "x": 72,
+          "y": 13,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 2,
+          "y": 25,
+          "width": 10,
+          "depth": 11
+        },
+        {
+          "x": 13,
+          "y": 25,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 25,
+          "y": 25,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 37,
+          "y": 25,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 49,
+          "y": 25,
+          "width": 22,
+          "depth": 11
+        },
+        {
+          "x": 72,
+          "y": 25,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 2,
+          "y": 37,
+          "width": 10,
+          "depth": 11
+        },
+        {
+          "x": 13,
+          "y": 37,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 25,
+          "y": 37,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 37,
+          "y": 37,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 49,
+          "y": 37,
+          "width": 22,
+          "depth": 11
+        },
+        {
+          "x": 72,
+          "y": 37,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 2,
+          "y": 49,
+          "width": 10,
+          "depth": 22
+        },
+        {
+          "x": 13,
+          "y": 49,
+          "width": 11,
+          "depth": 22
+        },
+        {
+          "x": 25,
+          "y": 49,
+          "width": 11,
+          "depth": 22
+        },
+        {
+          "x": 37,
+          "y": 49,
+          "width": 11,
+          "depth": 22
+        },
+        {
+          "x": 49,
+          "y": 49,
+          "width": 22,
+          "depth": 22
+        },
+        {
+          "x": 72,
+          "y": 49,
+          "width": 11,
+          "depth": 22
+        },
+        {
+          "x": 2,
+          "y": 72,
+          "width": 10,
+          "depth": 11
+        },
+        {
+          "x": 13,
+          "y": 72,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 25,
+          "y": 72,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 37,
+          "y": 72,
+          "width": 11,
+          "depth": 11
+        },
+        {
+          "x": 49,
+          "y": 72,
+          "width": 22,
+          "depth": 11
+        },
+        {
+          "x": 72,
+          "y": 72,
+          "width": 11,
+          "depth": 11
+        }
+      ]
+    },
+    {
+      "id": "battery-trays-3x2x4",
+      "file": "AA battery holder 3x2x4.stl",
+      "type": "purpose-built",
+      "gridW": 3,
+      "gridL": 2,
+      "heightUnits": 4,
+      "measured": {
+        "width": 83.5,
+        "depth": 125.5,
+        "height": 31.8
+      },
+      "forItem": "AA batteries (40 cells, 4x8 layout)",
+      "category": "batteries",
+      "notes": "stackable when empty, tight corner fit fix",
+      "compartments": [
+        {
+          "x": 2,
+          "y": 2,
+          "width": 15,
+          "depth": 14
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "width": 32,
+          "depth": 14
+        },
+        {
+          "x": 51,
+          "y": 2,
+          "width": 32,
+          "depth": 14
+        },
+        {
+          "x": 2,
+          "y": 17,
+          "width": 15,
+          "depth": 30
+        },
+        {
+          "x": 18,
+          "y": 17,
+          "width": 32,
+          "depth": 30
+        },
+        {
+          "x": 51,
+          "y": 17,
+          "width": 32,
+          "depth": 30
+        },
+        {
+          "x": 2,
+          "y": 48,
+          "width": 15,
+          "depth": 15
+        },
+        {
+          "x": 18,
+          "y": 48,
+          "width": 32,
+          "depth": 15
+        },
+        {
+          "x": 51,
+          "y": 48,
+          "width": 32,
+          "depth": 15
+        },
+        {
+          "x": 2,
+          "y": 64,
+          "width": 15,
+          "depth": 14
+        },
+        {
+          "x": 18,
+          "y": 64,
+          "width": 32,
+          "depth": 14
+        },
+        {
+          "x": 51,
+          "y": 64,
+          "width": 32,
+          "depth": 14
+        },
+        {
+          "x": 2,
+          "y": 79,
+          "width": 15,
+          "depth": 15
+        },
+        {
+          "x": 18,
+          "y": 79,
+          "width": 32,
+          "depth": 15
+        },
+        {
+          "x": 51,
+          "y": 79,
+          "width": 32,
+          "depth": 15
+        },
+        {
+          "x": 2,
+          "y": 95,
+          "width": 15,
+          "depth": 30
+        },
+        {
+          "x": 18,
+          "y": 95,
+          "width": 32,
+          "depth": 30
+        },
+        {
+          "x": 51,
+          "y": 95,
+          "width": 32,
+          "depth": 30
+        }
+      ]
+    }
+  ]
+}
