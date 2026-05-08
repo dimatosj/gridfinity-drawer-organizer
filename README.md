@@ -8,6 +8,33 @@ There are thousands of Gridfinity bins on MakerWorld — open tubs, utensil hold
 
 Zero dependencies. Pure Node.js (v18+).
 
+## Designed for Claude Code
+
+This tool is built to be driven by [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Rather than memorizing CLI flags and JSON schemas, you describe your drawer and what goes in it in plain English — Claude reads the CLAUDE.md instructions and runs the full pipeline for you:
+
+> "I have a kitchen drawer that's 500mm wide, 400mm deep, and 80mm tall. I want to organize knives, chopsticks, teaspoons, and AA batteries."
+
+Claude will:
+1. Run the grid analysis and show you what fits
+2. Match your items to purpose-built bins from the catalog
+3. Show you the layout preview and ask for feedback
+4. Iterate on placement until you're happy
+5. Export the .3mf and print checklist
+
+You can also run every step manually from the command line — see [Quick Start](#quick-start) below.
+
+## Output Examples
+
+### Grid Analysis
+Computes grid dimensions, height analysis, baseplate tiling, and drawer placement options:
+
+![Grid analysis preview](docs/grid-analysis.png)
+
+### Layout Preview
+Interactive visualization of bin placement with print list:
+
+![Layout preview](docs/layout-preview.png)
+
 ## How It Works
 
 ```
@@ -197,6 +224,7 @@ Seven packs ship pre-cataloged (81 bins). Download the STLs from MakerWorld to u
 ```
 gridfinity/
 ├── src/
+│   ├── gridfinity-common.js       # Shared constants + grid/baseplate math
 │   ├── gridfinity-intake.js       # Scan STL collections → pack manifests
 │   ├── gridfinity-layout.js       # Grid analysis + HTML preview
 │   ├── gridfinity-fit.js          # Item matching + placement engine

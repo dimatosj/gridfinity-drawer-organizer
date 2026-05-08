@@ -12,8 +12,6 @@ const PACKS_DIR = path.join(__dirname, '..', 'packs');
 
 const PRINTER_SETTINGS_PATH = path.join(__dirname, 'bambu-p1s-settings.json');
 
-// ── STL resolution ────────────────────────────────────────────────────────
-
 function resolveSTLPath(packId, filename) {
   const packManifest = path.join(PACKS_DIR, `${packId}.json`);
   if (!fs.existsSync(packManifest)) return null;
@@ -30,8 +28,6 @@ function resolveSTLPath(packId, filename) {
 
   return null;
 }
-
-// ── Mesh volume ───────────────────────────────────────────────────────────
 
 function meshVolume(mesh) {
   let vol = 0;
@@ -57,8 +53,6 @@ function filamentEstimate(volumeMm3) {
   const meters = effective / FILAMENT_AREA / 1000;
   return { grams, meters };
 }
-
-// ── Shelf bin packing ─────────────────────────────────────────────────────
 
 const PLATE_SIZE = 256;
 const PART_GAP = 5;
@@ -111,8 +105,6 @@ function packIntoPlates(instances) {
   }
   return plates;
 }
-
-// ── 3MF XML builders ──────────────────────────────────────────────────────
 
 function escapeXml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -194,8 +186,6 @@ function buildModelSettings(meshObjects, buildItems, plates) {
   return xml;
 }
 
-// ── ZIP writer ────────────────────────────────────────────────────────────
-
 function crc32(buf) {
   let crc = 0xffffffff;
   for (let i = 0; i < buf.length; i++) {
@@ -265,8 +255,6 @@ const RELS = `<?xml version="1.0" encoding="UTF-8"?>
   <Relationship Target="/3D/3dmodel.model" Id="rel-1" Type="http://schemas.microsoft.com/3dmanufacturing/2013/01/3dmodel" />
 </Relationships>`;
 
-// ── Bambu printer settings extractor ─────────────────────────────────────
-
 const FILAMENT_ZERO_KEYS = [
   'solid_infill_filament', 'sparse_infill_filament',
   'support_filament', 'wall_filament',
@@ -287,8 +275,6 @@ function extractPrinterSettings() {
     return null;
   }
 }
-
-// ── Export orchestrator ───────────────────────────────────────────────────
 
 function export3MF(projectName) {
   const layoutPath = path.join(PROJECTS_DIR, projectName, 'layout.json');

@@ -4,16 +4,11 @@
 const fs = require('fs');
 const path = require('path');
 
-const PACKS_DIR = path.join(__dirname, '..', 'packs');
-const PROJECTS_DIR = path.join(__dirname, '..', 'projects');
-const GRID_UNIT = 42;
-const BASEPLATE_HEIGHT = 5;
-const CLEARANCE = 3;
-const HEIGHT_UNIT = 7;
-const BASE_HEIGHT = 3.8;
-const MAX_PRINTABLE_PLATE = 5;
-
-// ── Catalog ───────────────────────────────────────────────────────────────
+const {
+  PACKS_DIR, PROJECTS_DIR,
+  GRID_UNIT, HEIGHT_UNIT, BASE_HEIGHT,
+  calculateGrid, computeBaseplates, parseDimString,
+} = require('./gridfinity-common.js');
 
 function loadCatalog(packIds) {
   const packs = [];
@@ -35,7 +30,7 @@ function loadCatalog(packIds) {
     const pack = JSON.parse(fs.readFileSync(p, 'utf8'));
     packs.push(pack);
     for (const bin of pack.bins) {
-      const entry = { ...bin, pack: pack.pack, packName: pack.name };
+      const entry = { ...bin, pack: pack.pack };
       allBins.push(entry);
       if (bin.type === 'purpose-built') purposeBuilt.push(entry);
       else if (bin.type === 'compartmented') compartmented.push(entry);
@@ -45,8 +40,6 @@ function loadCatalog(packIds) {
 
   return { packs, allBins, purposeBuilt, openTubs, compartmented };
 }
-
-// ── Item matching ─────────────────────────────────────────────────────────
 
 function matchItem(itemName, catalog) {
   const queryWords = itemName.toLowerCase().split(/\s+/).filter(w => w.length > 1);
@@ -96,8 +89,6 @@ function findOpenTub(footprint, maxHeightUnits, catalog) {
 function findBinById(binId, catalog) {
   return catalog.allBins.find(b => b.id === binId) || null;
 }
-
-// ── Resolution ────────────────────────────────────────────────────────────
 
 function resolveItems(items, catalog, maxHeightUnits) {
   const resolved = [];
@@ -158,31 +149,6 @@ function resolveItems(items, catalog, maxHeightUnits) {
 
   return { error: false, resolved };
 }
-
-// ── Grid calculation ──────────────────────────────────────────────────────
-
-function calculateGrid(drawerMm) {
-  const gridW = Math.floor(drawerMm.width / GRID_UNIT);
-  const gridD = Math.floor(drawerMm.depth / GRID_UNIT);
-  const remainderW = Math.round(drawerMm.width - gridW * GRID_UNIT);
-  const remainderD = Math.round(drawerMm.depth - gridD * GRID_UNIT);
-
-  const maxHeightMm = drawerMm.height - BASEPLATE_HEIGHT - CLEARANCE;
-  const maxHeightUnits = Math.max(1, Math.floor((maxHeightMm - BASE_HEIGHT) / HEIGHT_UNIT));
-
-  return {
-    width: gridW,
-    depth: gridD,
-    unit: GRID_UNIT,
-    remainderW,
-    remainderD,
-    maxHeightMm,
-    maxHeightUnits,
-    drawerMm,
-  };
-}
-
-// ── Placement scoring ─────────────────────────────────────────────────────
 
 const WEIGHTS = {
   edgeAffinity: 0.30,
@@ -316,8 +282,6 @@ function placeBins(resolved, grid, reserved) {
   return { placed, occupied };
 }
 
-// ── Fill empty cells ──────────────────────────────────────────────────────
-
 function mergeEmptyCells(placed, grid) {
   const { width: gw, depth: gd } = grid;
   const covered = Array.from({ length: gd }, () => Array(gw).fill(false));
@@ -372,82 +336,6 @@ function fillWithOpenTubs(emptyRects, catalog, maxHeightUnits) {
   return fillers;
 }
 
-// ── Baseplate tiling ─────────────────────────────────────────────────────
-
-function tileAxis(total, maxTile) {
-  const tiles = [];
-  let rem = total;
-  while (rem > 0) {
-    tiles.push(Math.min(rem, maxTile));
-    rem -= maxTile;
-  }
-  return tiles;
-}
-
-function loadBaseplatePack() {
-  const files = fs.readdirSync(PACKS_DIR).filter(f => f.endsWith('.json'));
-  for (const f of files) {
-    const pack = JSON.parse(fs.readFileSync(path.join(PACKS_DIR, f), 'utf8'));
-    if (pack.bins && pack.bins.some(b => b.type === 'baseplate')) return pack;
-  }
-  return null;
-}
-
-function findBaseplate(w, d, pack) {
-  if (!pack) return null;
-  const plate = pack.bins.find(b =>
-    b.type === 'baseplate' &&
-    ((b.gridW === w && b.gridL === d) || (b.gridW === d && b.gridL === w))
-  );
-  return plate || null;
-}
-
-function computeBaseplates(grid, maxPlateSize) {
-  const baseplatePack = loadBaseplatePack();
-  if (baseplatePack && !maxPlateSize) {
-    const maxAvail = Math.max(...baseplatePack.bins.filter(b => b.type === 'baseplate').map(b => Math.max(b.gridW, b.gridL)));
-    maxPlateSize = Math.min(maxAvail, MAX_PRINTABLE_PLATE);
-  }
-  maxPlateSize = maxPlateSize || 5;
-
-  const wTiles = tileAxis(grid.width, maxPlateSize);
-  const dTiles = tileAxis(grid.depth, maxPlateSize);
-
-  const plateMap = new Map();
-  for (const w of wTiles) {
-    for (const d of dTiles) {
-      const key = `${Math.max(w, d)}x${Math.min(w, d)}`;
-      const norm = { w: Math.max(w, d), d: Math.min(w, d) };
-      if (plateMap.has(key)) {
-        plateMap.get(key).qty++;
-      } else {
-        plateMap.set(key, { ...norm, qty: 1 });
-      }
-    }
-  }
-
-  const plates = [...plateMap.values()].sort((a, b) => b.w * b.d - a.w * a.d);
-  const totalPlates = plates.reduce((s, p) => s + p.qty, 0);
-
-  for (const plate of plates) {
-    const bp = findBaseplate(plate.w, plate.d, baseplatePack);
-    if (bp) {
-      plate.file = bp.file;
-      plate.pack = baseplatePack.pack;
-    }
-  }
-
-  return {
-    maxPlateSize,
-    pack: baseplatePack ? baseplatePack.pack : null,
-    plates,
-    totalPlates,
-    tiling: { wTiles, dTiles },
-  };
-}
-
-// ── Print list ────────────────────────────────────────────────────────────
-
 function buildPrintList(allPlaced) {
   const fileMap = new Map();
   for (const box of allPlaced) {
@@ -462,8 +350,6 @@ function buildPrintList(allPlaced) {
   }
   return [...fileMap.values()];
 }
-
-// ── Main ──────────────────────────────────────────────────────────────────
 
 function fitLayout(input) {
   const catalog = loadCatalog(input.packs || null);
@@ -528,14 +414,6 @@ function fitLayout(input) {
   };
 }
 
-// ── CLI ───────────────────────────────────────────────────────────────────
-
-function parseDimString(s) {
-  const parts = s.replace(/mm$/i, '').split(/x/i).map(Number);
-  if (parts.length === 3) return { width: parts[0], depth: parts[1], height: parts[2] };
-  return null;
-}
-
 if (require.main === module) {
   const args = process.argv.slice(2);
   let projectName = null;
@@ -550,10 +428,22 @@ if (require.main === module) {
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', chunk => { data += chunk; });
   process.stdin.on('end', () => {
-    const input = JSON.parse(data);
+    let input;
+    try {
+      input = JSON.parse(data);
+    } catch (e) {
+      console.error('Invalid JSON input:', e.message);
+      process.exit(1);
+    }
     if (drawerStr) input.drawer = parseDimString(drawerStr);
     if (!input.drawer) {
       console.error('Provide drawer dimensions: --drawer WxDxH (mm)');
+      process.exit(1);
+    }
+    const d = input.drawer;
+    if (!Number.isFinite(d.width) || !Number.isFinite(d.depth) || !Number.isFinite(d.height)
+        || d.width <= 0 || d.depth <= 0 || d.height <= 0) {
+      console.error('Drawer dimensions must be positive numbers (got %dx%dx%d)', d.width, d.depth, d.height);
       process.exit(1);
     }
 
@@ -574,4 +464,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { loadCatalog, matchItem, findOpenTub, resolveItems, calculateGrid, computeBaseplates, fitLayout };
+module.exports = { loadCatalog, matchItem, findOpenTub, resolveItems, fitLayout };

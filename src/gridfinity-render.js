@@ -195,9 +195,11 @@ if (require.main === module) {
   fs.writeFileSync(outPath, html);
   console.error(`Preview saved: projects/${projectName}/preview.html`);
 
-  if (process.platform === 'darwin') execSync(`open "${outPath}"`);
-  else if (process.platform === 'win32') execSync(`start "" "${outPath}"`);
-  else execSync(`xdg-open "${outPath}"`);
+  try {
+    if (process.platform === 'darwin') execSync(`open "${outPath}"`);
+    else if (process.platform === 'win32') execSync(`start "" "${outPath}"`);
+    else execSync(`xdg-open "${outPath}"`);
+  } catch {}
 }
 
 module.exports = { renderHTML };

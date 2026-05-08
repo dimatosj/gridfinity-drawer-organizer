@@ -28,5 +28,16 @@
     "drawer-organizer",
     "bambu-studio",
     "3mf"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dimatosj/gridfinity-drawer-organizer.git"
+  },
+  "author": "John Googasian",
+  "files": [
+    "src/",
+    "packs/",
+    "README.md",
+    "LICENSE"
   ]
 }

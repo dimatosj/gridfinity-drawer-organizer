@@ -51,8 +51,6 @@ function measureSTL(filePath) {
   return meshBounds(mesh);
 }
 
-// ── Compartment detection via top-down height field ───────────────────────
-
 function pointInTriangleZ(a, b, c, px, py) {
   const v0x = c[0] - a[0], v0y = c[1] - a[1];
   const v1x = b[0] - a[0], v1y = b[1] - a[1];

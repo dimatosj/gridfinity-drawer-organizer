@@ -5,81 +5,11 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const PACKS_DIR = path.join(__dirname, '..', 'packs');
-const PROJECTS_DIR = path.join(__dirname, '..', 'projects');
-
-const GRID_UNIT = 42;
-const BASEPLATE_HEIGHT = 5;
-const CLEARANCE = 3;
-const HEIGHT_UNIT = 7;
-const BASE_HEIGHT = 3.8;
-
-// ── Grid calculation ─────────────────────────────────────────────────────
-
-function calculateGrid(drawerMm) {
-  const gridW = Math.floor(drawerMm.width / GRID_UNIT);
-  const gridD = Math.floor(drawerMm.depth / GRID_UNIT);
-  const remainderW = Math.round(drawerMm.width - gridW * GRID_UNIT);
-  const remainderD = Math.round(drawerMm.depth - gridD * GRID_UNIT);
-  const maxHeightMm = drawerMm.height - BASEPLATE_HEIGHT - CLEARANCE;
-  const maxHeightUnits = Math.max(1, Math.floor((maxHeightMm - BASE_HEIGHT) / HEIGHT_UNIT));
-
-  return { width: gridW, depth: gridD, unit: GRID_UNIT, remainderW, remainderD, maxHeightMm, maxHeightUnits, drawerMm };
-}
-
-// ── Baseplate tiling ─────────────────────────────────────────────────────
-
-function tileAxis(total, maxTile) {
-  const tiles = [];
-  let rem = total;
-  while (rem > 0) { tiles.push(Math.min(rem, maxTile)); rem -= maxTile; }
-  return tiles;
-}
-
-function loadBaseplatePack() {
-  const files = fs.readdirSync(PACKS_DIR).filter(f => f.endsWith('.json'));
-  for (const f of files) {
-    const pack = JSON.parse(fs.readFileSync(path.join(PACKS_DIR, f), 'utf8'));
-    if (pack.bins && pack.bins.some(b => b.type === 'baseplate')) return pack;
-  }
-  return null;
-}
-
-function findBaseplate(w, d, pack) {
-  if (!pack) return null;
-  return pack.bins.find(b => b.type === 'baseplate' && ((b.gridW === w && b.gridL === d) || (b.gridW === d && b.gridL === w))) || null;
-}
-
-function computeBaseplates(grid, maxPlateSize) {
-  const baseplatePack = loadBaseplatePack();
-  if (baseplatePack && !maxPlateSize) {
-    maxPlateSize = Math.max(...baseplatePack.bins.filter(b => b.type === 'baseplate').map(b => Math.max(b.gridW, b.gridL)));
-  }
-  maxPlateSize = maxPlateSize || 7;
-  const wTiles = tileAxis(grid.width, maxPlateSize);
-  const dTiles = tileAxis(grid.depth, maxPlateSize);
-
-  const plateMap = new Map();
-  for (const w of wTiles) {
-    for (const d of dTiles) {
-      const key = `${Math.max(w, d)}x${Math.min(w, d)}`;
-      if (plateMap.has(key)) plateMap.get(key).qty++;
-      else plateMap.set(key, { w: Math.max(w, d), d: Math.min(w, d), qty: 1 });
-    }
-  }
-  const plates = [...plateMap.values()].sort((a, b) => b.w * b.d - a.w * a.d);
-  for (const plate of plates) {
-    const bp = findBaseplate(plate.w, plate.d, baseplatePack);
-    if (bp) { plate.file = bp.file; plate.pack = baseplatePack.pack; }
-  }
-  return {
-    maxPlateSize, pack: baseplatePack ? baseplatePack.pack : null,
-    plates, totalPlates: plates.reduce((s, p) => s + p.qty, 0),
-    tiling: { wTiles, dTiles },
-  };
-}
-
-// ── Catalog summary ──────────────────────────────────────────────────────
+const {
+  PACKS_DIR, PROJECTS_DIR,
+  GRID_UNIT, BASEPLATE_HEIGHT, CLEARANCE, HEIGHT_UNIT, BASE_HEIGHT,
+  calculateGrid, computeBaseplates, parseDimString,
+} = require('./gridfinity-common.js');
 
 function loadCatalogSummary(maxHeightUnits) {
   const files = fs.readdirSync(PACKS_DIR).filter(f => f.endsWith('.json'));
@@ -109,8 +39,6 @@ function loadCatalogSummary(maxHeightUnits) {
   return { packs, allHeights: [...allHeights].sort((a, b) => a - b) };
 }
 
-// ── Height analysis ──────────────────────────────────────────────────────
-
 function heightAnalysis(maxHeightUnits) {
   const rows = [];
   for (let u = 1; u <= 10; u++) {
@@ -120,8 +48,6 @@ function heightAnalysis(maxHeightUnits) {
   }
   return rows;
 }
-
-// ── HTML preview ─────────────────────────────────────────────────────────
 
 function renderLayoutHTML(grid, baseplates, catalogSummary, heights) {
   const gw = grid.width, gd = grid.depth;
@@ -162,37 +88,6 @@ function renderLayoutHTML(grid, baseplates, catalogSummary, heights) {
   ).join('\n');
 
   const drawer = grid.drawerMm;
-  const gridWidthPx = gw * cellPx + (gw - 1) * 2;
-  const gridDepthPx = gd * cellPx + (gd - 1) * 2;
-  const remWPx = grid.remainderW * SCALE;
-  const remDPx = grid.remainderD * SCALE;
-  const drawerWPx = gridWidthPx + remWPx;
-  const drawerDPx = gridDepthPx + remDPx;
-
-  function makeDrawerViz(label, gridLeft, gridTop) {
-    const gapRight = drawerWPx - gridWidthPx - gridLeft;
-    const gapBottom = drawerDPx - gridDepthPx - gridTop;
-    const leftLabel = gridLeft > 8 ? `<span class="gap-label" style="left:${gridLeft/2}px;top:${drawerDPx/2}px;">${Math.round(gridLeft/SCALE)}mm</span>` : '';
-    const rightLabel = gapRight > 8 ? `<span class="gap-label" style="right:${gapRight/2}px;top:${drawerDPx/2}px;">${Math.round(gapRight/SCALE)}mm</span>` : '';
-    const topLabel = gridTop > 8 ? `<span class="gap-label" style="top:${gridTop/2}px;left:${drawerWPx/2}px;">${Math.round(gridTop/SCALE)}mm</span>` : '';
-    const bottomLabel = gapBottom > 8 ? `<span class="gap-label" style="bottom:${gapBottom/2}px;left:${drawerWPx/2}px;">${Math.round(gapBottom/SCALE)}mm</span>` : '';
-    return `<div class="placement-option">
-      <div class="placement-label">${label}</div>
-      <div class="drawer-outline" style="width:${drawerWPx}px;height:${drawerDPx}px;">
-        ${leftLabel}${rightLabel}${topLabel}${bottomLabel}
-        <div class="grid-container" style="position:absolute;left:${gridLeft}px;top:${gridTop}px;grid-template-columns:repeat(${gw},${cellPx}px);grid-template-rows:repeat(${gd},${cellPx}px);">
-          ${gridCells.join('\n          ')}
-          ${bpTilingViz.join('\n          ')}
-        </div>
-      </div>
-    </div>`;
-  }
-
-  const placements = [
-    makeDrawerViz('Back-left (gap at front + right)', 0, 0),
-    makeDrawerViz('Centered (gap split evenly)', remWPx / 2, remDPx / 2),
-    makeDrawerViz('Back-right (gap at front + left)', remWPx, 0),
-  ];
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -210,18 +105,6 @@ function renderLayoutHTML(grid, baseplates, catalogSummary, heights) {
     h1 { font-size: 1.8rem; color: #4ecdc4; margin-bottom: 4px; }
     h2 { font-size: 1.2rem; color: #a29bfe; margin: 32px 0 12px; border-bottom: 1px solid #333; padding-bottom: 6px; }
     .subtitle { color: #aaa; margin-bottom: 24px; }
-
-    .placements { display: flex; gap: 32px; flex-wrap: wrap; margin: 16px 0 24px; }
-    .placement-option { display: flex; flex-direction: column; align-items: center; }
-    .placement-label { font-size: 0.82em; color: #aaa; margin-bottom: 8px; font-weight: 500; }
-    .drawer-outline {
-      border: 2px solid #e17055; border-radius: 4px; position: relative;
-      background: repeating-linear-gradient(45deg, rgba(225,112,85,0.04), rgba(225,112,85,0.04) 4px, transparent 4px, transparent 8px);
-    }
-    .gap-label {
-      position: absolute; transform: translate(-50%,-50%);
-      font-size: 0.7em; color: #e17055; font-weight: 600; white-space: nowrap;
-    }
 
     .grid-container { display: grid; gap: 2px; }
     .empty-cell {
@@ -283,14 +166,15 @@ function renderLayoutHTML(grid, baseplates, catalogSummary, heights) {
   Clearance budget: ${drawer.height}mm drawer &minus; ${BASEPLATE_HEIGHT}mm baseplate &minus; ${CLEARANCE}mm clearance = ${grid.maxHeightMm.toFixed(0)}mm available for bins
 </p>
 
-<h2>Grid Placement in Drawer</h2>
+<h2>Grid &amp; Baseplates</h2>
 <p style="color:#aaa;font-size:0.88em;margin-bottom:4px;">
   ${gw}×${gd} grid = ${gw * GRID_UNIT}×${gd * GRID_UNIT}mm inside a ${drawer.width}×${drawer.depth}mm drawer
-  &mdash; <span style="color:#e17055">${grid.remainderW}mm</span> gap (width) + <span style="color:#e17055">${grid.remainderD}mm</span> gap (depth)
+  &mdash; <span style="color:#e17055">${grid.remainderW}mm</span> unused (width) + <span style="color:#e17055">${grid.remainderD}mm</span> unused (depth)
 </p>
 <div class="grid-label back-label">Back</div>
-<div class="placements">
-  ${placements.join('\n  ')}
+<div class="grid-container" style="grid-template-columns:repeat(${gw},${cellPx}px);grid-template-rows:repeat(${gd},${cellPx}px);margin:8px 0 4px;">
+  ${gridCells.join('\n  ')}
+  ${bpTilingViz.join('\n  ')}
 </div>
 <div class="grid-label front-label">Front (you)</div>
 
@@ -307,14 +191,6 @@ function renderLayoutHTML(grid, baseplates, catalogSummary, heights) {
 
 </body>
 </html>`;
-}
-
-// ── CLI ───────────────────────────────────────────────────────────────────
-
-function parseDimString(s) {
-  const parts = s.replace(/mm$/i, '').split(/x/i).map(Number);
-  if (parts.length === 3) return { width: parts[0], depth: parts[1], height: parts[2] };
-  return null;
 }
 
 if (require.main === module) {
@@ -337,6 +213,11 @@ if (require.main === module) {
   const drawerMm = parseDimString(drawerStr);
   if (!drawerMm) {
     console.error('Invalid dimensions. Use WxDxH format (mm), e.g. 500x400x80');
+    process.exit(1);
+  }
+  if (!Number.isFinite(drawerMm.width) || !Number.isFinite(drawerMm.depth) || !Number.isFinite(drawerMm.height)
+      || drawerMm.width <= 0 || drawerMm.depth <= 0 || drawerMm.height <= 0) {
+    console.error('Drawer dimensions must be positive numbers (got %dx%dx%d)', drawerMm.width, drawerMm.depth, drawerMm.height);
     process.exit(1);
   }
 
@@ -379,10 +260,12 @@ if (require.main === module) {
     fs.writeFileSync(htmlPath, html);
     console.error(`Preview: projects/${projectName}/grid-preview.html`);
 
-    if (process.platform === 'darwin') execSync(`open "${htmlPath}"`);
-    else if (process.platform === 'win32') execSync(`start "" "${htmlPath}"`);
-    else execSync(`xdg-open "${htmlPath}"`);
+    try {
+      if (process.platform === 'darwin') execSync(`open "${htmlPath}"`);
+      else if (process.platform === 'win32') execSync(`start "" "${htmlPath}"`);
+      else execSync(`xdg-open "${htmlPath}"`);
+    } catch {}
   }
 }
 
-module.exports = { calculateGrid, computeBaseplates, loadCatalogSummary, heightAnalysis };
+module.exports = { loadCatalogSummary, heightAnalysis };

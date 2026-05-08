@@ -6,8 +6,6 @@ const path = require('path');
 
 const PROJECTS_DIR = path.join(__dirname, '..', 'projects');
 
-// ── Minimal PDF writer ────────────────────────────────────────────────────
-
 function pdfString(s) {
   return '(' + s.replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)') + ')';
 }
@@ -75,8 +73,6 @@ function buildPDF(pages) {
   return Buffer.from(pdf, 'latin1');
 }
 
-// ── Drawing helpers ──────────────────────────────────────────────────────
-
 function drawCheckbox(x, y) {
   return `q 0.4 w ${x} ${y} 10 10 re S Q\n`;
 }
@@ -88,8 +84,6 @@ function drawText(x, y, size, font, text) {
 function drawLine(x1, y1, x2, y2) {
   return `q 0.3 w 0.7 0.7 0.7 RG ${x1} ${y1} m ${x2} ${y2} l S Q\n`;
 }
-
-// ── Checklist page builder ──────────────────────────────────────────────
 
 function generateChecklist(projectName) {
   const projectDir = path.join(PROJECTS_DIR, projectName);
@@ -235,8 +229,6 @@ function generateChecklist(projectName) {
   return buildPDF(pages);
 }
 
-// ── CLI ──────────────────────────────────────────────────────────────────
-
 if (require.main === module) {
   const name = process.argv[2];
   if (!name) {
@@ -250,9 +242,11 @@ if (require.main === module) {
   process.stdout.write(outPath + '\n');
   process.stderr.write(`Checklist saved: ${path.basename(outPath)}\n`);
 
-  if (process.platform === 'darwin') {
-    require('child_process').execSync(`open "${outPath}"`);
-  }
+  try {
+    if (process.platform === 'darwin') require('child_process').execSync(`open "${outPath}"`);
+    else if (process.platform === 'win32') require('child_process').execSync(`start "" "${outPath}"`);
+    else require('child_process').execSync(`xdg-open "${outPath}"`);
+  } catch {}
 }
 
 module.exports = { generateChecklist };

@@ -12,8 +12,6 @@ const DEFAULTS = {
   output: path.join(__dirname, '..', 'packs'),
 };
 
-// ── Filename parsing ──────────────────────────────────────────────────────
-
 const PATTERNS = [
   { name: 'dbtw',    re: /DBTW\s+(\d+)x(\d+)x(\d+)/i,      groups: ['w','l','h'] },
   { name: 'WxLxHU', re: /(\d+)x(\d+)x(\d+)U/i,             groups: ['w','l','h'] },
@@ -33,8 +31,6 @@ function parseFilename(filename) {
   }
   return null;
 }
-
-// ── Grid dimension derivation from measurements ───────────────────────────
 
 function deriveGridDims(measured, gridUnit, baseHeight, heightUnit) {
   const dims = [measured.width, measured.depth].sort((a, b) => a - b);
@@ -61,8 +57,6 @@ function checkMismatch(parsed, derived, filename) {
   return warnings;
 }
 
-// ── Heuristic classification from filename ────────────────────────────────
-
 const NOISE_WORDS = /\b(gridfinity|generic|modular|blank|obj|stl|v\d+|w_logo)\b/gi;
 const DIM_PATTERNS = [
   /DBTW\s*\d+x\d+x\d+/i,
@@ -83,21 +77,15 @@ function classifyFromFilename(filename) {
   return null;
 }
 
-// ── Pack-meta sidecar loading ─────────────────────────────────────────────
-
 function loadPackMeta(dir) {
   const metaPath = path.join(dir, 'pack-meta.json');
   if (!fs.existsSync(metaPath)) return {};
   return JSON.parse(fs.readFileSync(metaPath, 'utf8'));
 }
 
-// ── ID generation ─────────────────────────────────────────────────────────
-
 function makeBinId(packId, gridW, gridL, heightUnits) {
   return `${packId}-${gridW}x${gridL}x${heightUnits}`;
 }
-
-// ── CLI argument parsing ──────────────────────────────────────────────────
 
 function parseArgs(argv) {
   const args = argv.slice(2);
@@ -152,8 +140,6 @@ function parseArgs(argv) {
 
   return opts;
 }
-
-// ── Main ──────────────────────────────────────────────────────────────────
 
 function intake(opts) {
   const dir = path.resolve(opts.dir);
@@ -291,8 +277,6 @@ function intake(opts) {
   return manifest;
 }
 
-// ── Summary output ────────────────────────────────────────────────────────
-
 function printSummary(manifest, warnings, outPath) {
   const widths = { id: 4, grid: 4, height: 3, type: 4, measured: 8, file: 4 };
   for (const b of manifest.bins) {
@@ -344,8 +328,6 @@ function printSummary(manifest, warnings, outPath) {
     for (const w of warnings) console.log(`  ${w}`);
   }
 }
-
-// ── Entry point ───────────────────────────────────────────────────────────
 
 if (require.main === module) {
   const opts = parseArgs(process.argv);
